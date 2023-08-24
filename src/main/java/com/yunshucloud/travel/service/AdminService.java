@@ -16,6 +16,10 @@ public class AdminService
      public Page<Admin> findPage(int page,int size){
          Page selectPage = adminMapper.selectPage(new Page(page, size), null);
          return selectPage;
-
      }
+
+     public void add(Admin admin){
+         adminMapper.insert(admin);
+     }
+
 }

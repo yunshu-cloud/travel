@@ -24,4 +24,12 @@ public class AdminController
         modelAndView.setViewName("/backstage/admin_all");
         return modelAndView;
     }
+
+    @RequestMapping("/add")
+    public String add(Admin admin){
+        adminService.add(admin);
+        return "redirect:/backstage/admin/all";
+    }
+
+
 }
