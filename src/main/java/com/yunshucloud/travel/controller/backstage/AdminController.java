@@ -25,11 +25,31 @@ public class AdminController
         return modelAndView;
     }
 
+    //新增管理员
     @RequestMapping("/add")
     public String add(Admin admin){
         adminService.add(admin);
         return "redirect:/backstage/admin/all";
     }
+
+
+    // 查询管理员 跳转到修改页面
+    @RequestMapping("/edit")
+    public ModelAndView edit(Integer aid){
+        Admin admin = adminService.findById(aid);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("admin",admin);
+        modelAndView.setViewName("/backstage/admin_edit");
+        return modelAndView;
+    }
+
+
+    @RequestMapping("/update")
+    public String update(Admin admin){
+        adminService.update(admin);
+        return "redirect:/backstage/admin/all";
+    }
+
 
 
 }

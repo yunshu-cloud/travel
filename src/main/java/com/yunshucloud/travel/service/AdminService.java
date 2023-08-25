@@ -18,8 +18,19 @@ public class AdminService
          return selectPage;
      }
 
+     // 新增管理员
      public void add(Admin admin){
          adminMapper.insert(admin);
      }
 
+
+     // 查询管理员
+     public Admin findById(Integer aid){
+         return adminMapper.selectById(aid);
+     }
+
+     // 修改管理员
+    public void update(Admin admin){
+         adminMapper.updateById(admin);
+    }
 }
