@@ -2,12 +2,15 @@ package com.yunshucloud.travel.controller.backstage;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yunshucloud.travel.pojo.Admin;
+import com.yunshucloud.travel.pojo.RoleWithStatus;
 import com.yunshucloud.travel.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @RequestMapping("/backstage/admin")
 @Controller
@@ -61,6 +64,16 @@ public class AdminController
         return modelAndView;
     }
 
+
+    @RequestMapping("/findRole")
+    public ModelAndView findRole(Integer aid) {
+        List<RoleWithStatus> roles = adminService.findRole(aid);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("roles", roles);
+        modelAndView.addObject("aid", aid);
+        modelAndView.setViewName("/backstage/admin_role");
+        return modelAndView;
+    }
 
 
 }
