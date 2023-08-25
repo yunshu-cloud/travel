@@ -22,5 +22,12 @@ public class RoleService {
         roleMapper.insert(role);
     }
 
+    public Role findById(Integer rid){
+        return roleMapper.selectById(rid);
+    }
+
+    public void update(Role role){
+        roleMapper.updateById(role);
+    }
 
 }

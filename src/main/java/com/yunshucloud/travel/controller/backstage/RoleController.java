@@ -26,10 +26,28 @@ public class RoleController {
         return modelAndView;
     }
 
+    // 添加角色
     @RequestMapping("/add")
     public String add(Role role){
         roleService.add(role);
         return "redirect:/backstage/role/all";
     }
+
+    @RequestMapping("/edit")
+    public ModelAndView edit(Integer rid) {
+        Role role = roleService.findById(rid);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("role", role);
+        modelAndView.setViewName("/backstage/role_edit");
+        return modelAndView;
+    }
+
+
+    @RequestMapping("/update")
+    public String update(Role role) {
+        roleService.update(role);
+        return "redirect:/backstage/role/all";
+    }
+
 }
 
