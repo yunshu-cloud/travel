@@ -5,4 +5,7 @@ import com.yunshucloud.travel.pojo.Admin;
 
 public interface AdminMapper extends BaseMapper<Admin>
 {
+
+    // 查询用户详情
+    Admin findDesc(Integer aid);
 }

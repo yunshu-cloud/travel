@@ -33,4 +33,10 @@ public class AdminService
     public void update(Admin admin){
          adminMapper.updateById(admin);
     }
+
+    // 查询用户详情
+    public Admin findDesc(Integer aid){
+         return adminMapper.findDesc(aid);
+    }
+
 }

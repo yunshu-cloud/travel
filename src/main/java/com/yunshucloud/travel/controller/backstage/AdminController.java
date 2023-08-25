@@ -51,5 +51,16 @@ public class AdminController
     }
 
 
+    // 查询用户详情
+    @RequestMapping("/desc")
+    public ModelAndView desc(Integer aid){
+        Admin admin = adminService.findDesc(aid);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("admin",admin);
+        modelAndView.setViewName("/backstage/admin_desc");
+        return modelAndView;
+    }
+
+
 
 }
