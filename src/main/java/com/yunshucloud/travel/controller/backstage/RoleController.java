@@ -33,6 +33,8 @@ public class RoleController {
         return "redirect:/backstage/role/all";
     }
 
+
+    // 修改角色的预查询 将要修改的角色信息显示在页面上
     @RequestMapping("/edit")
     public ModelAndView edit(Integer rid) {
         Role role = roleService.findById(rid);
@@ -43,9 +45,16 @@ public class RoleController {
     }
 
 
+    // 修改角色操作
     @RequestMapping("/update")
     public String update(Role role) {
         roleService.update(role);
+        return "redirect:/backstage/role/all";
+    }
+
+    @RequestMapping("/delete")
+    public String delete(Integer rid){
+        roleService.delete(rid);
         return "redirect:/backstage/role/all";
     }
 

@@ -22,12 +22,19 @@ public class RoleService {
         roleMapper.insert(role);
     }
 
+    // 修改角色的预查询 将要修改的角色信息显示在页面上
     public Role findById(Integer rid){
         return roleMapper.selectById(rid);
     }
 
+    // 修改角色操作
     public void update(Role role){
         roleMapper.updateById(role);
+    }
+
+    // 删除角色
+    public void delete(Integer rid){
+        roleMapper.deleteById(rid);
     }
 
 }

@@ -66,7 +66,7 @@
                                 <td th:text="${role.roleDesc }"></td>
                                 <td class="text-center">
                                     <a th:href="@{/backstage/role/edit(rid=${role.rid})}" class="btn bg-olive btn-xs">修改</a>
-                                    <a  class="btn bg-gray btn-xs">删除</a>
+                                    <a th:onclick="|javascript:del(${role.rid})|" class="btn bg-gray btn-xs">删除</a>
                                     <a th:href="@{/backstage/role/findPermission(rid=${role.rid})}" class="btn bg-blue btn-xs">分配权限</a>
                                 </td>
                             </tr>
@@ -96,9 +96,16 @@
     <footer th:replace="~{/backstage/common_footer::footer}"></footer>
 </div>
 
-
 <!-- 在js中获取Model的值 -->
 <script th:inline="javascript">
+    function del(rid) {
+        if (confirm("确定要删除吗?")) {
+            location.href = "/backstage/role/delete?rid=" + rid;
+        }
+    }
+
+<!-- 在js中获取Model的值 -->
+// <script th:inline="javascript">
     $(function () {
         var currentPage = [[${rolePage.current}]]; // 当前页
         var pages = [[${rolePage.pages}]]; // 总页数
