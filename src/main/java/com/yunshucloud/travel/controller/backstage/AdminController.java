@@ -18,7 +18,6 @@ public class AdminController
 {
     @Autowired
     private AdminService adminService;
-
     @RequestMapping("/all")
     public ModelAndView all(@RequestParam(defaultValue = "1") int page,@RequestParam(defaultValue = "10") int size){
         ModelAndView modelAndView = new ModelAndView();
@@ -27,15 +26,12 @@ public class AdminController
         modelAndView.setViewName("/backstage/admin_all");
         return modelAndView;
     }
-
     //新增管理员
     @RequestMapping("/add")
     public String add(Admin admin){
         adminService.add(admin);
         return "redirect:/backstage/admin/all";
     }
-
-
     // 查询管理员 跳转到修改页面
     @RequestMapping("/edit")
     public ModelAndView edit(Integer aid){
@@ -45,15 +41,11 @@ public class AdminController
         modelAndView.setViewName("/backstage/admin_edit");
         return modelAndView;
     }
-
-
     @RequestMapping("/update")
     public String update(Admin admin){
         adminService.update(admin);
         return "redirect:/backstage/admin/all";
     }
-
-
     // 查询用户详情
     @RequestMapping("/desc")
     public ModelAndView desc(Integer aid){
@@ -63,8 +55,7 @@ public class AdminController
         modelAndView.setViewName("/backstage/admin_desc");
         return modelAndView;
     }
-
-
+    // 查询用户角色
     @RequestMapping("/findRole")
     public ModelAndView findRole(Integer aid) {
         List<RoleWithStatus> roles = adminService.findRole(aid);
@@ -74,6 +65,16 @@ public class AdminController
         modelAndView.setViewName("/backstage/admin_role");
         return modelAndView;
     }
-
-
+    // 修改用户角色
+    @RequestMapping("/updateRole")
+    public String manageRole(Integer aid,Integer[] ids){
+        adminService.updateRoles(aid,ids);
+        return "redirect:/backstage/admin/all";
+    }
+    // 修改用户状态 启用or禁用
+    @RequestMapping("/updateStatus")
+    public String updateStatus(Integer aid){
+        adminService.updateStatus(aid);
+        return "redirect:/backstage/admin/all";
+    }
 }

@@ -3,6 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yunshucloud.travel.mapper.AdminMapper">
+
+
     <resultMap id="adminMap" type="com.yunshucloud.travel.pojo.Admin">
         <id property="aid" column="aid"></id>
         <result property="username" column="username"></result>
@@ -15,8 +17,6 @@
             </collection>
         </collection>
     </resultMap>
-
-
     <select id="findDesc" parameterType="int" resultMap="adminMap">
         SELECT *
         FROM admin
@@ -30,4 +30,19 @@
                            ON role_permission.pid = permission.pid
         WHERE admin.aid = #{aid}
     </select>
+
+
+
+    <delete id="deleteAdminAllRoles" parameterType="int">
+        DELETE
+        FROM admin_role
+        where aid = #{aid}
+    </delete>
+
+
+    <insert id="addAdminRole">
+        INSERT INTO admin_role
+        values (#{aid}, #{rid})
+    </insert>
+
 </mapper>

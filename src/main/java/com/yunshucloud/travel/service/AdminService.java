@@ -76,4 +76,23 @@ public class AdminService
     }
 
 
+    // 修改用户角色
+    public void updateRoles(Integer aid,Integer[] ids){
+        // 删除用户的所有角色
+        adminMapper.deleteAdminAllRoles(aid);
+        // 重新给用户添加角色
+        for (Integer rid:ids){
+            adminMapper.addAdminRole(aid,rid);
+        }
+    }
+
+
+    // 修改用户状态 启用or禁用
+    public void updateStatus(Integer aid){
+         Admin admin = adminMapper.selectById(aid);
+         admin.setStatus(!admin.isStatus()); // 状态取反
+         adminMapper.updateById(admin);
+    }
+
+
 }
