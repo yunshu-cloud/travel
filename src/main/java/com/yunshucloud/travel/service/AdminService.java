@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yunshucloud.travel.mapper.AdminMapper;
 import com.yunshucloud.travel.mapper.RoleMapper;
 import com.yunshucloud.travel.pojo.Admin;
+import com.yunshucloud.travel.pojo.Permission;
 import com.yunshucloud.travel.pojo.Role;
 import com.yunshucloud.travel.pojo.RoleWithStatus;
 import org.springframework.beans.BeanUtils;
@@ -104,4 +105,9 @@ public class AdminService
         return admin;
     }
 
+
+    // 根据名字查询权限
+    public List<Permission> findAllPermission(String username){
+         return adminMapper.findAllPermission(username);
+    }
 }

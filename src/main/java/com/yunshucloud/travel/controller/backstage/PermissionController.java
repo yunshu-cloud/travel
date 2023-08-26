@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yunshucloud.travel.pojo.Permission;
 import com.yunshucloud.travel.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ public class PermissionController {
     private PermissionService permissionService;
 
     @RequestMapping("/all")
+    @PreAuthorize("hasAnyAuthority('/permission/all')")
     public ModelAndView all(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int size) {
         Page<Permission> permissionPage = permissionService.findPage(page, size);
         ModelAndView modelAndView = new ModelAndView();

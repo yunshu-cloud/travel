@@ -6,4 +6,9 @@
     <select id="findPermissionIdByRole" parameterType="int" resultType="int">
         SELECT pid FROM role_permission WHERE rid = #{rid}
     </select>
+
+
+
+
+
 </mapper>

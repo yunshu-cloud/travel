@@ -5,6 +5,7 @@ import com.yunshucloud.travel.pojo.PermissionWithStatus;
 import com.yunshucloud.travel.pojo.Role;
 import com.yunshucloud.travel.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +22,7 @@ public class RoleController {
 
     // 分页查询显示
     @RequestMapping("/all")
+    @PreAuthorize("hasAnyAuthority('/role/all')")
     public ModelAndView all(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int size) {
         Page<Role> rolePage = roleService.findPage(page, size);
         ModelAndView modelAndView = new ModelAndView();
