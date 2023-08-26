@@ -45,4 +45,10 @@ public class PermissionController {
         permissionService.update(permission);
         return "redirect:/backstage/permission/all";
     }
+
+    @RequestMapping("/delete")
+    public String delete(Integer pid){
+        permissionService.delete(pid);
+        return "redirect:/backstage/permission/all";
+    }
 }

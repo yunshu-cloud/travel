@@ -29,4 +29,8 @@ public class PermissionService {
     public void update(Permission permission){
         permissionMapper.updateById(permission);
     }
+
+    public void delete(Integer pid){
+        permissionMapper.deleteById(pid);
+    }
 }
