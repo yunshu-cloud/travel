@@ -10,6 +10,7 @@ import com.yunshucloud.travel.pojo.Role;
 import com.yunshucloud.travel.pojo.RoleWithStatus;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,6 +25,10 @@ public class AdminService
     @Autowired
     private RoleMapper roleMapper;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+
     // 分页查询管理员
      public Page<Admin> findPage(int page,int size){
          Page selectPage = adminMapper.selectPage(new Page(page, size), null);
@@ -32,6 +37,8 @@ public class AdminService
 
      // 新增管理员
      public void add(Admin admin){
+         // 对密码进行加密
+         admin.setPassword(bCryptPasswordEncoder.encode(admin.getPassword()));
          adminMapper.insert(admin);
      }
 
@@ -43,6 +50,13 @@ public class AdminService
 
      // 修改管理员
     public void update(Admin admin){
+         Admin oldAdmin = adminMapper.selectById(admin.getAid());
+         String oldPassword = oldAdmin.getPassword();
+         String newPassword = admin.getPassword();
+         if(!oldAdmin.equals(newPassword)){
+             admin.setPassword(bCryptPasswordEncoder.encode(newPassword));
+         }
+
          adminMapper.updateById(admin);
     }
 

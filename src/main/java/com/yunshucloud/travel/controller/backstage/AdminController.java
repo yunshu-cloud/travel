@@ -6,6 +6,7 @@ import com.yunshucloud.travel.pojo.RoleWithStatus;
 import com.yunshucloud.travel.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,7 @@ public class AdminController
 {
     @Autowired
     private AdminService adminService;
+
 
     @RequestMapping("/all")
     @PreAuthorize("hasAnyAuthority('/admin/all')")
