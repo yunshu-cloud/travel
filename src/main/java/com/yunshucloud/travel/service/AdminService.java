@@ -1,5 +1,6 @@
 package com.yunshucloud.travel.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yunshucloud.travel.mapper.AdminMapper;
 import com.yunshucloud.travel.mapper.RoleMapper;
@@ -94,5 +95,13 @@ public class AdminService
          adminMapper.updateById(admin);
     }
 
+
+    // 根据名字查询管理员
+    public Admin findByAdminName(String username){
+        QueryWrapper<Admin> queryWrapper = new QueryWrapper();
+        queryWrapper.eq("username",username);
+        Admin admin = adminMapper.selectOne(queryWrapper);
+        return admin;
+    }
 
 }
