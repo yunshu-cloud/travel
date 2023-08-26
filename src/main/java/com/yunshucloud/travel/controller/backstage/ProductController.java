@@ -85,5 +85,27 @@ public class ProductController {
     }
 
 
+    @RequestMapping("/edit")
+    public ModelAndView edit(Integer pid) {
+        // 查询被修改的产品
+        Product product = productService.findOne(pid);
+        // 查询所有产品类别
+        List<Category> categoryList = categoryService.findAll();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("product", product);
+        modelAndView.addObject("categoryList", categoryList);
+        modelAndView.setViewName("/backstage/product_edit");
+        return modelAndView;
+    }
+
+
+    @RequestMapping("/update")
+    public String update(Product product) {
+        productService.update(product);
+        return "redirect:/backstage/product/all";
+    }
+
+
+
 }
 

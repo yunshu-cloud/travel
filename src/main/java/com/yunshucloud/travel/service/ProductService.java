@@ -24,6 +24,16 @@ public class ProductService {
         productMapper.insert(product);
     }
 
+    public Product findOne(int pid){
+        Product product = productMapper.findOne(pid);
+        return product;
+    }
+
+
+    public void update(Product product){
+        productMapper.updateById(product);
+    }
+
 
 }
 

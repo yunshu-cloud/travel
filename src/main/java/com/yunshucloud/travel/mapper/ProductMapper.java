@@ -6,4 +6,6 @@ import com.yunshucloud.travel.pojo.Product;
 
 public interface ProductMapper extends BaseMapper<Product> {
     Page<Product> findProductPage(Page<Product> page);
+
+    Product findOne(int pid);
 }
