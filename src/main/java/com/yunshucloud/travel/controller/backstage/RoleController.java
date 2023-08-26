@@ -1,6 +1,7 @@
 package com.yunshucloud.travel.controller.backstage;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.yunshucloud.travel.pojo.PermissionWithStatus;
 import com.yunshucloud.travel.pojo.Role;
 import com.yunshucloud.travel.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/backstage/role")
@@ -57,6 +60,18 @@ public class RoleController {
         roleService.delete(rid);
         return "redirect:/backstage/role/all";
     }
+
+
+    @RequestMapping("/findPermission")
+    public ModelAndView findPermission(Integer rid) {
+        List<PermissionWithStatus> permissions = roleService.findPermission(rid);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("permissions", permissions);
+        modelAndView.addObject("rid", rid);
+        modelAndView.setViewName("/backstage/role_permission");
+        return modelAndView;
+    }
+
 
 }
 
