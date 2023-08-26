@@ -6,6 +6,8 @@ import com.yunshucloud.travel.pojo.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoryService {
     @Autowired
@@ -29,5 +31,9 @@ public class CategoryService {
 
     public void delete(Integer cid){
         categoryMapper.deleteById(cid);
+    }
+
+    public List<Category> findAll(){
+        return categoryMapper.selectList(null);
     }
 }
