@@ -34,6 +34,13 @@ public class ProductService {
         productMapper.updateById(product);
     }
 
+    public void updateStatus(Integer pid){
+        Product product = productMapper.selectById(pid);
+        product.setStatus(!product.getStatus());
+        productMapper.updateById(product);
+    }
+
+
 
 }
 
