@@ -76,4 +76,16 @@ public class RoleService {
     }
 
 
+    // 修改角色权限
+    public void updatePermission(Integer rid,Integer[] ids){
+        // 删除角色的所有权限
+        roleMapper.deleteRoleAllPermission(rid);
+
+        // 重新给角色添加权限
+        for(Integer pid:ids){
+            roleMapper.addRolePermission(rid,pid);
+        }
+    }
+
+
 }

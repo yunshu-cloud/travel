@@ -73,5 +73,12 @@ public class RoleController {
     }
 
 
+    @RequestMapping("/updatePermission")
+    public String managePermission(Integer rid,Integer[] ids){
+        roleService.updatePermission(rid,ids);
+        return "redirect:/backstage/role/all";
+    }
+
+
 }
 

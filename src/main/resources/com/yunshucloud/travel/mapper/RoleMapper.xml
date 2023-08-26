@@ -6,4 +6,15 @@
     <select id="findRoleIdByAdmin" parameterType="int" resultType="int">
         SELECT rid FROM admin_role WHERE aid = #{aid}
     </select>
+
+    <delete id="deleteRoleAllPermission" parameterType="int">
+        DELETE
+        FROM role_permission
+        WHERE rid = #{rid}
+    </delete>
+
+    <insert id="addRolePermission">
+        INSERT INTO role_permission
+        values(#{rid},#{pid})
+    </insert>
 </mapper>
