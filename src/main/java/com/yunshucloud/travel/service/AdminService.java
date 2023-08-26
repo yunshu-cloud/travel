@@ -7,7 +7,7 @@ import com.yunshucloud.travel.mapper.RoleMapper;
 import com.yunshucloud.travel.pojo.Admin;
 import com.yunshucloud.travel.pojo.Permission;
 import com.yunshucloud.travel.pojo.Role;
-import com.yunshucloud.travel.pojo.RoleWithStatus;
+import com.yunshucloud.travel.bean.RoleWithStatus;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

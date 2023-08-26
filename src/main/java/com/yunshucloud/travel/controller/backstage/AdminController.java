@@ -2,11 +2,10 @@ package com.yunshucloud.travel.controller.backstage;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yunshucloud.travel.pojo.Admin;
-import com.yunshucloud.travel.pojo.RoleWithStatus;
+import com.yunshucloud.travel.bean.RoleWithStatus;
 import com.yunshucloud.travel.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

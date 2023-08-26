@@ -3,7 +3,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yunshucloud.travel.mapper.PermissionMapper;
 import com.yunshucloud.travel.mapper.RoleMapper;
 import com.yunshucloud.travel.pojo.Permission;
-import com.yunshucloud.travel.pojo.PermissionWithStatus;
+import com.yunshucloud.travel.bean.PermissionWithStatus;
 import com.yunshucloud.travel.pojo.Role;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

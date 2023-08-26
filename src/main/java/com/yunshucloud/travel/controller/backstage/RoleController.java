@@ -1,7 +1,7 @@
 package com.yunshucloud.travel.controller.backstage;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.yunshucloud.travel.pojo.PermissionWithStatus;
+import com.yunshucloud.travel.bean.PermissionWithStatus;
 import com.yunshucloud.travel.pojo.Role;
 import com.yunshucloud.travel.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;

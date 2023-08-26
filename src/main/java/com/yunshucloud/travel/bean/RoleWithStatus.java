@@ -1,4 +1,4 @@
-package com.yunshucloud.travel.pojo;
+package com.yunshucloud.travel.bean;
 
 import lombok.Data;
 
