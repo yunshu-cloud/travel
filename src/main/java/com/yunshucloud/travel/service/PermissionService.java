@@ -21,4 +21,12 @@ public class PermissionService {
     public void add(Permission permission){
         permissionMapper.insert(permission);
     }
+
+    public Permission findById(Integer pid){
+        return permissionMapper.selectById(pid);
+    }
+
+    public void update(Permission permission){
+        permissionMapper.updateById(permission);
+    }
 }

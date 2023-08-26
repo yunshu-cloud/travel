@@ -30,4 +30,19 @@ public class PermissionController {
         permissionService.add(permission);
         return "redirect:/backstage/permission/all";
     }
+
+    @RequestMapping("/edit")
+    public ModelAndView edit(Integer pid){
+        Permission permission = permissionService.findById(pid);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("permission",permission);
+        modelAndView.setViewName("/backstage/permission_edit");
+        return modelAndView;
+    }
+
+    @RequestMapping("/update")
+    public String update(Permission permission){
+        permissionService.update(permission);
+        return "redirect:/backstage/permission/all";
+    }
 }
