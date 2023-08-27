@@ -7,14 +7,19 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql:///travel?serverTimezone=UTC
+#    url: jdbc:mysql:///travel?serverTimezone=UTC
+    url: jdbc:mysql://192.168.66.100:3306/travel?serverTimezone=UTC
     username: root
     password: root@1234
   servlet:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
-
+  # 打成jar包必须添加如下配置才能找到页面
+  thymeleaf:
+    mode: HTML
+    cache: false
+    prefix: classpath:/templates
 
 #??mybatis-plus
 mybatis-plus:
@@ -41,7 +46,8 @@ mail:
 
 # 项目路径
 project:
-  path: http://localhost
+  path: http://192.168.22.100
+#  path: http://localhost
 
 
 
