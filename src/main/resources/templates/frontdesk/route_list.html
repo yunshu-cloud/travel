@@ -41,9 +41,10 @@
             <script>
                 $(function () {
                     var currentPage = [[${productPage.current}]];// 当前页
-                    var pages = [[${productPage.pages}]];// 总页数
+                    var pages = [[${productPage.pages}]];// 当前页
                     var cid = '[[${cid}]]';
                     var productName = '[[${productName}]]';
+
 
                     // 分页插件
                     $(".pagination").bootstrapPaginator({
@@ -88,6 +89,7 @@
                             <span class="score">5.0分</span>
                         </p>
                     </div>
+
 
                 </li>
                 <li class="item">
@@ -139,5 +141,6 @@
 <!-- 引入底部 -->
 <footer th:replace="~{/frontdesk/footer::footer}"></footer>
 </body>
+
 
 </html>

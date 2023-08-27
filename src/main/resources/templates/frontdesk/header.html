@@ -230,12 +230,14 @@
                     </p>
                 </div>
             </div>
+
             <div class="search">
                 <form action="/frontdesk/product/routeList">
-                    <input name="productName" type="text" placeholder="" class="search_input" autocomplete="off">
+                    <input name="productName" th:value="${productName}" type="text" placeholder="" class="search_input" autocomplete="off">
                     <button type="submit" class="search-button">搜索</button>
                 </form>
             </div>
+
             <div class="hottel">
                 <div class="hot_pic">
                     <img src="images/hot_tel.jpg" alt="">
