@@ -34,5 +34,9 @@ logging:
     console: '%d{HH:mm:ss.SSS} %clr(%-5level) ---  [%-15thread] %cyan(%-50logger{50}):%msg%n'
 
 
+mail:
+  user: 1210542419@qq.com
+  password: oqxdxyouekrjifjj
+
 
 
