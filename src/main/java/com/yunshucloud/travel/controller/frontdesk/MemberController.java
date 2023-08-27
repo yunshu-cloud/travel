@@ -65,4 +65,11 @@ public class MemberController {
     }
 
 
+    @RequestMapping("/logout")
+    public String logout(HttpSession session){
+        session.removeAttribute("member");
+        return "redirect:/frontdesk/index";
+    }
+
+
 }
