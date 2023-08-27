@@ -5,6 +5,8 @@
         .header {
             width: 100%
         }
+
+
         .header_top {
             width: 100%;
             height: 0px;
@@ -170,8 +172,8 @@
         }
 
 
-        .nav>li>a:focus,
-        .nav>li>a:hover {
+        .nav > li > a:focus,
+        .nav > li > a:hover {
             background: none;
         }
 
@@ -181,31 +183,34 @@
         }
 
 
-        .nav>li>a {
+        .nav > li > a {
             padding: 10px 15px;
         }
     </style>
     <div class="shortcut">
         <div class="box">
-            <div th:if="${session.member} == null" class="left">
-                <!-- 如果未登陆则显示登录/注册 -->
-                <a href="/frontdesk/login">登录</a>
-                |
-                <a href="/frontdesk/register">注册</a>
+            <div class="left">
+                <div th:if="${session.member} == null">
+                    <!-- 如果未登陆则显示登录/注册 -->
+                    <a href="/frontdesk/login">登录</a>
+                    |
+                    <a href="/frontdesk/register">注册</a>
+                </div>
             </div>
             <!-- 登录状态  -->
-            <div th:if="${session.member} != null" class="right">
-                <!-- 如果已经登陆则显示用户名 -->
-                <span th:text="'欢迎回来,'+${session.member.username}"></span>
-                <a href="/frontdesk/favorite/myFavorite" class="collection">我的收藏</a>
-                <a href="/frontdesk/member/logout">
-                    退出
-                    <span class="glyphicon glyphicon-log-out"></span>
-                </a>
+            <div class="right">
+                <div th:if="${session.member} != null">
+                    <!-- 如果已经登陆则显示用户名 -->
+                    <span th:text="'欢迎回来,'+${session.member.username}"></span>
+                    <a href="/frontdesk/favorite/myfavorite" class="collection">我的收藏</a>
+                    <a href="/frontdesk/member/logout">
+                        退出
+                        <span class="glyphicon glyphicon-log-out"></span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-
     <div class="header_wrap">
         <div class="topbar">
             <div class="logo">
@@ -226,8 +231,10 @@
                 </div>
             </div>
             <div class="search">
-                <input name="" type="text" placeholder="" class="search_input" autocomplete="off">
-                <a href="javascript:;" class="search-button">搜索</a>
+                <form action="/frontdesk/product/routeList">
+                    <input name="productName" type="text" placeholder="" class="search_input" autocomplete="off">
+                    <button type="submit" class="search-button">搜索</button>
+                </form>
             </div>
             <div class="hottel">
                 <div class="hot_pic">
@@ -242,16 +249,20 @@
     </div>
     <!-- 首页导航 -->
     <div class="navitem">
-        <ul class="nav">
-            <li class="nav-active"><a href="index.html">首页</a></li>
-            <li><a href="route_list.html">门票</a></li>
-            <li><a href="route_list.html">酒店</a></li>
-            <li><a href="route_list.html">香港车票</a></li>
-            <li><a href="route_list.html">出境游</a></li>
-            <li><a href="route_list.html">国内游</a></li>
-            <li><a href="route_list.html">港澳游</a></li>
-            <li><a href="route_list.html">抱团定制</a></li>
-            <li><a href="route_list.html">全球自由行</a></li>
-        </ul>
+        <ul class="nav"></ul>
     </div>
+    <script>
+        $(function (){
+            $.get("/frontdesk/category/all",function (categories) {
+                var str = "<li class=\"nav-active\"><a href=\"index.html\">首页</a></li>";
+                for (var i = 0 ; i <categories.length; i++){
+                    str += "<li><a href=\"/frontdesk/product/routeList?cid="+categories[i].cid+"\">"+categories[i].cname+"</a></li>"
+                }
+
+                $(".nav").html(str);
+
+                console.log(categories);
+            })
+        })
+    </script>
 </header>
