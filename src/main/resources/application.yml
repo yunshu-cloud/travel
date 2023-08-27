@@ -39,4 +39,10 @@ mail:
   password: oqxdxyouekrjifjj
 
 
+# 项目路径
+project:
+  path: http://localhost
+
+
+
 
