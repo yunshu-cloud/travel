@@ -89,6 +89,42 @@
                     </excludes>
                 </configuration>
             </plugin>
+
+
+            <!-- docker-maven-plugin-->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.2</version>
+                <configuration>
+                    <!-- Docker路径 -->
+                    <dockerHost>http://192.168.66.100:2375</dockerHost>
+                    <!-- Dockerfile定义 -->
+                    <baseImage>openjdk:11</baseImage>
+                    <!-- 作者 -->
+                    <maintainer>yunshucloud</maintainer>
+                    <resources>
+                        <resource>
+                            <!-- 复制jar包到docker容器指定目录 -->
+                            <targetPath>/</targetPath>
+                            <!-- 从哪个包拷贝文件，target包 -->
+                            <directory>${project.build.directory}</directory>
+                            <!-- 拷贝哪个文件 -->
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                    <workdir>/</workdir>
+                    <entryPoint>["java", "-jar", "${project.build.finalName}.jar"]</entryPoint>
+                    <forceTags>true</forceTags>
+                    <!-- 镜像名 -->
+                    <imageName>${project.artifactId}</imageName>
+                    <!-- 镜像版本 -->
+                    <imageTags>
+                        <imageTag>${project.version}</imageTag>
+                    </imageTags>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
     <repositories>
@@ -111,5 +147,7 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+
+
 
 </project>
