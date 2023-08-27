@@ -33,5 +33,30 @@
         where pid = #{pid}
     </select>
 
+    <select id="findFavoriteByPidAndMid" resultType="int">
+        SELECT COUNT(*)
+        FROM favorite
+        where pid = #{pid}
+          AND mid = #{mid}
+    </select>
+
+    <insert id="addFavorite">
+        INSERT INTO favorite(pid,mid) values(#{pid},#{mid})
+    </insert>
+    <delete id="delFavorite">
+        DELETE from favorite where pid=#{pid} and mid=#{mid}
+    </delete>
+
+    <select id="findMemberFavorite" parameterType="int" resultType="com.yunshucloud.travel.pojo.Product">
+        SELECT product.*
+        FROM product
+                 LEFT JOIN favorite
+                           ON product.`pid` = favorite.`pid`
+        WHERE favorite.`mid` = #{mid}
+    </select>
+
+
+
+
 
 </mapper>
